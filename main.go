@@ -1,9 +1,9 @@
 package main
 
 import (
-	"L_2/codeUnderstanding"
+	"L_2/calendar"
 )
 
 func main()  {
-	codeUnderstanding.MainList7()
+	calendar.StartCalendar()
 }

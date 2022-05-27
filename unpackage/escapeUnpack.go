@@ -18,6 +18,9 @@ func (e EscapeSequence) unpack(str string) (string, error) {
 			var sumb byte
 			if i+1<len(str){
 				sumb = str[i+1]
+			}else{
+				buf.Write([]byte{str[i]})
+				break
 			}
 			//считываем число следующее за ним
 			num := ""
@@ -28,15 +31,14 @@ func (e EscapeSequence) unpack(str string) (string, error) {
 					break
 				}
 			}
+			i--
 			n,_ :=strconv.Atoi(num)
-			if n == 0 { n++ }
+			if n == 0 {
+				n++
+			}
 			buf.Write(bytes.Repeat([]byte{sumb},n))
 
 		}
 	}
 	return buf.String(),nil
-}
-
-func unpackEscape(str string) {
-
 }

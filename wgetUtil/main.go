@@ -1,24 +1,20 @@
 package wgetUtil
 
 import (
+	"flag"
 	"fmt"
 	"io"
 	"log"
 	"net/http"
 	"os"
-	"strings"
 )
 
-
+var fileNameFlag = flag.String("O", "index.html", "Файл в который будут сохранены полученные данные")
 
 func MainWget() {
-
-	URL := "https://seasonkrasoty.ru/product/legkiy_omolazhivayushchiy_krem"
-
-	segments := strings.Split(URL, "/")
-	fileName := segments[len(segments)-1]
-	fileName += ".html"
-
+	flag.Parse()
+	URL := flag.Arg(0)
+	fileName := *fileNameFlag
 	file, err := os.Create(fileName)
 	if err != nil {
 		log.Fatal(err)
