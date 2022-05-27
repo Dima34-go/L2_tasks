@@ -1,9 +1,9 @@
 package main
 
 import (
-	"L_2/unixUtil"
+	"L_2/codeUnderstanding"
 )
 
 func main()  {
-	unixUtil.MainUnix()
+	codeUnderstanding.MainList7()
 }
